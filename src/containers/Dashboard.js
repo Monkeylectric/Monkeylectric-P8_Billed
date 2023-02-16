@@ -146,7 +146,12 @@ export default class {
     }
 
     bills.forEach(bill => {
-      $(`#open-bill${bill.id}`).click((e) => this.handleEditTicket(e, bill, bills))
+      // START - Dashboard show tickets
+      //$(`#open-bill${bill.id}`).click((e) => this.handleEditTicket(e, bill, bills))
+      $(`#status-bills-container${index} #open-bill${bill.id}`).click((e) =>
+        this.handleEditTicket(e, bill, bills)
+      );
+      // END - Dashboard show tickets
     })
 
     return bills
