@@ -20,7 +20,17 @@ const row = (bill) => {
   }
 
 const rows = (data) => {
-  return (data && data.length) ? data.map(bill => row(bill)).join("") : ""
+  console.log(data);
+  console.log(new Date("22 Nov. 21"));
+
+  console.log(data.map((bill) => new Date(bill.date)))
+
+  return (data && data.length) ? data
+    // START - Sort date
+    // .sort((a, b) => (new Date(a.date) < new Date(b.date)) ? 1 : -1)
+    .sort((a, b) => { return a.originalDate < b.originalDate ? 1 : -1})
+    // END - Sort date
+    .map(bill => row(bill)).join("") : ""
 }
 
 export default ({ data: bills, loading, error }) => {
