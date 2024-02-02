@@ -26,10 +26,12 @@ export default class NewBill {
     formData.append('email', email)
 
     // START - Check file extension (GERER LE MYME TYPE)
-    const fileExtension = fileName.split(".").pop();
-    const fileTypeAccepted = ["jpg", "jpeg", "png"];
+    // const fileExtension = fileName.split(".").pop();
+    // const fileTypeAccepted = ["jpg", "jpeg", "png"];
+    const filType = file.type;
+    const fileTypeAccepted = ["image/gif", "image/jpeg", "image/png", "image/webp"];
 
-    if (fileTypeAccepted.includes(fileExtension.toLowerCase())) {
+    if (fileTypeAccepted.includes(filType)) {
       this.store
         .bills()
         .create({
